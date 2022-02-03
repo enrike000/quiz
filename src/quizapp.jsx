@@ -40,14 +40,33 @@ const Quiz = () => {
     },
   ];
   const [nowquest, setNowquest] = useState(0);
+  const [end, setEnd] = useState(false);
+  const [score, setScore] = useState(0);
+  const click = (correct) => {
+    if (correct === true) {
+      setScore(score + 1);
+    }
+    const nextQuestion = nowquest + 1;
+    if (nextQuestion < questions.length) {
+      setNowquest(nextQuestion);
+    } else {
+      setEnd(true);
+    }
+  };
   return (
     <>
-      <div>{questions[nowquest].shekitxva}</div>
-      <div>
-        {questions[nowquest].kitxvisoption.map((e) => (
-          <button>{e.pasuxi}</button>
-        ))}
-      </div>
+      {end ? (
+        <p>{score}</p>
+      ) : (
+        <>
+          <div>{questions[nowquest].qtext}</div>
+          <div>
+            {questions[nowquest].answers.map((e) => (
+              <button onClick={() => click(e.correct)}>{e.atext}</button>
+            ))}
+          </div>
+        </>
+      )}
     </>
   );
 };
