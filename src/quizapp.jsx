@@ -56,10 +56,15 @@ const Quiz = () => {
   return (
     <>
       {end ? (
-        <p>{score}</p>
+        <p>
+          your score is {score} of {questions.length}
+        </p>
       ) : (
         <>
-          <div>{questions[nowquest].qtext}</div>
+          <div>
+            Question : <br />
+            {questions[nowquest].qtext}
+          </div>
           <hr />
           <div>
             {questions[nowquest].answers.map((e) => (
