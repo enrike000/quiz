@@ -60,6 +60,7 @@ const Quiz = () => {
       ) : (
         <>
           <div>{questions[nowquest].qtext}</div>
+          <hr />
           <div>
             {questions[nowquest].answers.map((e) => (
               <button onClick={() => click(e.correct)}>{e.atext}</button>
